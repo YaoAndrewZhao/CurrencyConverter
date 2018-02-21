@@ -25,7 +25,7 @@ widget.css
 favicon.ico
 ```
 
-## Running the tests
+### Demo
 
 Open the link to this folder on your browser
 
@@ -34,3 +34,24 @@ https://www.myhost.com/demo/index.html
 ```
 
 Put a number into the first input box for amount of money to be converted; then choose what currency this amount is; finally, choose the target currency under *Converted amount:*.
+
+## Usage
+
+In your html file, put in these two lines into head section include the widget files:
+
+```
+<link rel="stylesheet" type="text/css" href="widget.css">
+<script type="text/javascript" src="widget.js"></script>
+```
+In the body section, put in a <div> element with a uniqe id, such as:
+
+```
+<div id="firstInstanceOfWidget"></div>
+```
+
+In the script section, after the page is loaded, add these lines to invoke the rendering of widget:
+
+```
+var firstInstanceOfWidget = document.getElementById('firstInstanceOfWidget');
+firstInstanceOfWidget.innerHTML = ccGetTemplate();
+```
