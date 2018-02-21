@@ -1,49 +1,48 @@
-.currency-convertor-ul {
-    margin: 10px 10px 10px 10px;
-    padding: 10px 10px 10px 10px;
-    display: block;
-    background-color: #ddd;
-    list-style: none;
-    border-style: solid;
-    border-width: 1px;
-    /*height:content-box;*/
-}             
-.currency-convertor-full-line {
-    width: 100%;
-    clear:both; 
-    margin-bottom: 10px;
+.currency-convertor {
+  margin: 10px 10px 10px 10px;
+  padding: 10px 10px 10px 10px;
+  display: block;
+  background-color: #ddd;
+  list-style: none;
+  border-style: solid;
+  border-width: 1px;
+  /*height:content-box;*/
 }
-.currency-convertor-inputbox {
-    float: left;
-    margin-right: 10px;
+.currency-convertor .full-line {
+  width: 100%;
+  clear: both;
+  margin-bottom: 10px;
 }
-.currency-convertor-combobox {
-    float: left;
-    margin-bottom: 10px;
-    margin-right: 10px;
+.currency-convertor .inputbox {
+  float: left;
+  margin-right: 10px;
 }
-.currency-convertor-disclaimer {
-    float: right;
-}            
-.currency-convertor-empty {
-    height: 0px;
+.currency-convertor .combobox {
+  float: left;
+  margin-bottom: 10px;
+  margin-right: 10px;
 }
-.currency-convertor-input {
-    width: 100%;
+.currency-convertor .error-message {
+  float: left;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  color: #f00;
+  display: none;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.currency-convertor .disclaimer {
+  float: right;
+}
+.currency-convertor .empty {
+  height: 0px;
+}
+.currency-convertor .input {
+  width: 100%;
 }
 
 .currency-convertor-disclaimer-message {
-    background-color: #eee;
-    display: none;
-    text-align: center;
-    margin: 10px 10px 10px 10px;
-}
-
-.currency-convertor-error-message {
-    float: left;
-    margin-bottom: 10px;
-    margin-right: 10px;
-    color: #f00;
-    display: none;
-    font-family: Arial, Helvetica, sans-serif
+  background-color: #eee;
+  display: none;
+  text-align: center;
+  margin: 10px 10px 10px 10px;
 }

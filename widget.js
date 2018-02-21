@@ -40,10 +40,10 @@ function ccBaseCurrencyChanged(element){
  */
 function ccCalculate(containerId, fromRemote){    
     fromRemote = fromRemote === true;
-    var inputBox = document.querySelectorAll('#' + containerId + ' .currency-convertor-input')[0];
-    var outputBox = document.querySelectorAll('#' + containerId + ' .currency-convertor-input')[1];
-    var baseCurrency = document.querySelector('#' + containerId + ' .currency-convertor-baseCurrency');
-    var convertedCurrency = document.querySelector('#' + containerId + ' .currency-convertor-convertedCurrency');
+    var inputBox = document.querySelectorAll('#' + containerId + ' .input')[0];
+    var outputBox = document.querySelectorAll('#' + containerId + ' .input')[1];
+    var baseCurrency = document.querySelector('#' + containerId + ' .baseCurrency');
+    var convertedCurrency = document.querySelector('#' + containerId + ' .convertedCurrency');
     
     if (baseCurrency.value == convertedCurrency.value)
         outputBox.value = inputBox.value;
@@ -119,32 +119,33 @@ function ccFetchRemoteData(baseCurrency, currenyArray, callback, containerId) {
  * widget HTML (interface structure)
  */
 function ccGetTemplate() {
-    return '<ul class="currency-convertor-ul">' +
-                '<li class="currency-convertor-full-line">Currency converter</li>' + 
-                '<li class="currency-convertor-full-line">Type in amount and select currency:</li>' +
-                '<li class="currency-convertor-inputbox"><input class="currency-convertor-input" type="number" name="baseAmount" placeholder="0.00" onInput="ccBaseCurrencyInput(this)"></li>'+
-                '<li class="currency-convertor-combobox">'+
-                    '<select name="baseCurrency" class="currency-convertor-baseCurrency" onChange="ccBaseCurrencyChanged(this)">'+
-                        '<option value="CAD">CAD</option>'+
-                        '<option value="USD">USD</option>'+
-                        '<option value="EUR">EUR</option>'+ 
-                    '</select>'+
-                '</li>'+
-                '<li class="currency-convertor-error-message">Error</li>'+
-                '<li class="currency-convertor-full-line">Converted amount:</li>'+
-                '<li class="currency-convertor-inputbox"><input class="currency-convertor-input" type="number" name="convertedAmount" placeholder="0.00"  disabled></li>'+
-                '<li class="currency-convertor-combobox">'+
-                    '<select name="c" class="currency-convertor-convertedCurrency" onChange="ccConvertedCurrencyChanged(this)">'+
-                        '<option value="CAD">CAD</option>'+
-                        '<option value="USD">USD</option>'+
-                        '<option value="EUR">EUR</option>'+ 
-                    '</select>'+
-                '</li>'+            
-                '<li class="currency-convertor-full-line currency-convertor-empty"></li>'+
-                '<li class="currency-convertor-disclaimer"><a href="#" onclick="ccShowDisclaimer(this)">Disclaimer</a></li>'+
-                '<li class="currency-convertor-full-line currency-convertor-empty"></li>'+
-            '</ul>' + 
+    return  '<ul class="currency-convertor">' +
+                '<li class="full-line">Currency converter</li>' +
+                '<li class="full-line">Type in amount and select currency:</li>' +
+                '<li class="inputbox"><input class="input" type="number" name="baseAmount" placeholder="0.00" onInput="ccBaseCurrencyInput(this)"></li>' +
+                '<li class="combobox">' +
+                    '<select name="baseCurrency" class="baseCurrency" onChange="ccBaseCurrencyChanged(this)">' +
+                        '<option value="CAD">CAD</option>' +
+                        '<option value="USD">USD</option>' +
+                        '<option value="EUR">EUR</option>' + 
+                    '</select>' +
+                '</li>' +
+                '<li class="error-message">Error</li>' +
+                '<li class="full-line">Converted amount:</li>' +
+                '<li class="inputbox"><input class="input" type="number" name="convertedAmount" placeholder="0.00"  disabled></li>' +
+                '<li class="combobox">' +
+                    '<select name="c" class="convertedCurrency" onChange="ccConvertedCurrencyChanged(this)">' +
+                        '<option value="CAD">CAD</option>' +
+                        '<option value="USD">USD</option>' +
+                        '<option value="EUR">EUR</option> ' +
+                    '</select>' +
+                '</li>' +            
+                '<li class="full-line currency-convertor-empty"></li>' +
+                '<li class="disclaimer"><a href="#" onclick="ccShowDisclaimer(this)">Disclaimer</a></li>' +
+                '<li class="full-line empty"></li>' +
+            '</ul>' +
             '<div class="currency-convertor-disclaimer-message">Rates are updated around 4PM CET every working day. <a href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html">Find out more</a></div>';
+
 }
 
 /**
@@ -171,7 +172,6 @@ function ccFormatDate(date) {
 function ccShowDisclaimer(element) {
     var container = element.parentNode.parentNode.parentNode;
     var message = document.querySelectorAll('#' + container.id + ' .currency-convertor-disclaimer-message')[0];
-    console.log(message);
     if (message.style.display == 'none' || message.style.display == "")
         message.style.display = 'block';
     else
@@ -184,7 +184,7 @@ function ccShowDisclaimer(element) {
  * @param {type} message - message to be displayed
  */
 function ccShowErrorMessage (containerId, message) {
-    var messageBox = document.querySelectorAll('#' + containerId + ' .currency-convertor-error-message')[0];
+    var messageBox = document.querySelectorAll('#' + containerId + ' .error-message')[0];
     messageBox.style.display = 'block';
     messageBox.innerHTML = message;
 }
@@ -194,7 +194,7 @@ function ccShowErrorMessage (containerId, message) {
  * @param {String} containerId - current widget container DOM id
  */
 function ccClearErrorMessage (containerId) {
-    var messageBox = document.querySelectorAll('#' + containerId + ' .currency-convertor-error-message')[0];
+    var messageBox = document.querySelectorAll('#' + containerId + ' .error-message')[0];
     messageBox.style.display = 'none';
     messageBox.innerHTML = '';
 }
@@ -210,7 +210,7 @@ function ccValidateNumber(containerId, value, message) {
     if (!(/^[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?$/.test(value))) {
         if (value.length > 0)
             ccShowErrorMessage(containerId, message);
-        var convertedAmountBox = document.querySelectorAll('#' + containerId + ' .currency-convertor-input')[1];
+        var convertedAmountBox = document.querySelectorAll('#' + containerId + ' .input')[1];
         convertedAmountBox.value = '';
         return false;
     } else {
