@@ -1,4 +1,32 @@
-var currenyArray = ['CAD', 'USD', 'EUR'];
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: widget.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: widget.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>var currenyArray = ['CAD', 'USD', 'EUR'];
 
 /**
  * Retrieves base currency amount and calculate converted amount
@@ -57,7 +85,7 @@ function ccCalculate(containerId, fromRemote){
         } else {
             ccObject = JSON.parse(ccString);
             today = ccFormatDate(new Date());
-            if (ccObject.date < today || ccObject.base != baseCurrency.value) {
+            if (ccObject.date &lt; today || ccObject.base != baseCurrency.value) {
                 if (fromRemote == false)
                     ccFetchRemoteData(baseCurrency.value, currenyArray, ccHandleRemoteData, containerId);
                 else
@@ -94,7 +122,7 @@ function ccHandleRemoteData(data, containerId) {
 }
 
 /**
- * Retrieve remote data based on user-defined amount & base_currency;
+ * Retrieve remote data based on user-defined amount &amp; base_currency;
  * after async request, invoke callback function to handle data/error gracefully
  * @param {String} baseCurrency - user defined base currency (ie, CAD, USD, EUR)
  * @param {Array} currenyArray - this list of all required converted currency
@@ -102,10 +130,10 @@ function ccHandleRemoteData(data, containerId) {
  * @param {String} containerId - current widget container DOM id
  */
 function ccFetchRemoteData(baseCurrency, currenyArray, callback, containerId) {
-    var url = "https://api.fixer.io/latest?base=" + baseCurrency + "&symbols=" + currenyArray.join();
+    var url = "https://api.fixer.io/latest?base=" + baseCurrency + "&amp;symbols=" + currenyArray.join();
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
-      if (xhr.readyState == 4 && xhr.status == 200) {
+      if (xhr.readyState == 4 &amp;&amp; xhr.status == 200) {
         var data = JSON.parse(xhr.responseText);
         callback(data, containerId);
       } else if (xhr.readyState == 4)
@@ -119,32 +147,32 @@ function ccFetchRemoteData(baseCurrency, currenyArray, callback, containerId) {
  * widget HTML (interface structure)
  */
 function ccGetTemplate() {
-    return '<ul class="currency-convertor-ul">' +
-                '<li class="currency-convertor-full-line">Currency converter</li>' + 
-                '<li class="currency-convertor-full-line">Type in amount and select currency:</li>' +
-                '<li class="currency-convertor-inputbox"><input class="currency-convertor-input" type="number" name="baseAmount" placeholder="0.00" onInput="ccBaseCurrencyInput(this)"></li>'+
-                '<li class="currency-convertor-combobox">'+
-                    '<select name="baseCurrency" class="currency-convertor-baseCurrency" onChange="ccBaseCurrencyChanged(this)">'+
-                        '<option value="CAD">CAD</option>'+
-                        '<option value="USD">USD</option>'+
-                        '<option value="EUR">EUR</option>'+ 
-                    '</select>'+
-                '</li>'+
-                '<li class="currency-convertor-error-message">Error</li>'+
-                '<li class="currency-convertor-full-line">Converted amount:</li>'+
-                '<li class="currency-convertor-inputbox"><input class="currency-convertor-input" type="number" name="convertedAmount" placeholder="0.00"  disabled></li>'+
-                '<li class="currency-convertor-combobox">'+
-                    '<select name="c" class="currency-convertor-convertedCurrency" onChange="ccConvertedCurrencyChanged(this)">'+
-                        '<option value="CAD">CAD</option>'+
-                        '<option value="USD">USD</option>'+
-                        '<option value="EUR">EUR</option>'+ 
-                    '</select>'+
-                '</li>'+            
-                '<li class="currency-convertor-full-line currency-convertor-empty"></li>'+
-                '<li class="currency-convertor-disclaimer"><a href="#" onclick="ccShowDisclaimer(this)">Disclaimer</a></li>'+
-                '<li class="currency-convertor-full-line currency-convertor-empty"></li>'+
-            '</ul>' + 
-            '<div class="currency-convertor-disclaimer-message">Rates are updated around 4PM CET every working day. <a href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html">Find out more</a></div>';
+    return '&lt;ul class="currency-convertor-ul">' +
+                '&lt;li class="currency-convertor-full-line">Currency converter&lt;/li>' + 
+                '&lt;li class="currency-convertor-full-line">Type in amount and select currency:&lt;/li>' +
+                '&lt;li class="currency-convertor-inputbox">&lt;input class="currency-convertor-input" type="number" name="baseAmount" placeholder="0.00" onInput="ccBaseCurrencyInput(this)">&lt;/li>'+
+                '&lt;li class="currency-convertor-combobox">'+
+                    '&lt;select name="baseCurrency" class="currency-convertor-baseCurrency" onChange="ccBaseCurrencyChanged(this)">'+
+                        '&lt;option value="CAD">CAD&lt;/option>'+
+                        '&lt;option value="USD">USD&lt;/option>'+
+                        '&lt;option value="EUR">EUR&lt;/option>'+ 
+                    '&lt;/select>'+
+                '&lt;/li>'+
+                '&lt;li class="currency-convertor-error-message">Error&lt;/li>'+
+                '&lt;li class="currency-convertor-full-line">Converted amount:&lt;/li>'+
+                '&lt;li class="currency-convertor-inputbox">&lt;input class="currency-convertor-input" type="number" name="convertedAmount" placeholder="0.00"  disabled>&lt;/li>'+
+                '&lt;li class="currency-convertor-combobox">'+
+                    '&lt;select name="c" class="currency-convertor-convertedCurrency" onChange="ccConvertedCurrencyChanged(this)">'+
+                        '&lt;option value="CAD">CAD&lt;/option>'+
+                        '&lt;option value="USD">USD&lt;/option>'+
+                        '&lt;option value="EUR">EUR&lt;/option>'+ 
+                    '&lt;/select>'+
+                '&lt;/li>'+            
+                '&lt;li class="currency-convertor-full-line currency-convertor-empty">&lt;/li>'+
+                '&lt;li class="currency-convertor-disclaimer">&lt;a href="#" onclick="ccShowDisclaimer(this)">Disclaimer&lt;/a>&lt;/li>'+
+                '&lt;li class="currency-convertor-full-line currency-convertor-empty">&lt;/li>'+
+            '&lt;/ul>' + 
+            '&lt;div class="currency-convertor-disclaimer-message">Rates are updated around 4PM CET every working day. &lt;a href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html">Find out more&lt;/a>&lt;/div>';
 }
 
 /**
@@ -158,8 +186,8 @@ function ccFormatDate(date) {
         day = '' + d.getDate(),
         year = d.getFullYear();
 
-    if (month.length < 2) month = '0' + month;
-    if (day.length < 2) day = '0' + day;
+    if (month.length &lt; 2) month = '0' + month;
+    if (day.length &lt; 2) day = '0' + day;
 
     return [year, month, day].join('-');
 }
@@ -217,4 +245,26 @@ function ccValidateNumber(containerId, value, message) {
         ccClearErrorMessage(containerId);
         return true;
     }        
-}
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#ccBaseCurrencyChanged">ccBaseCurrencyChanged</a></li><li><a href="global.html#ccBaseCurrencyInput">ccBaseCurrencyInput</a></li><li><a href="global.html#ccCalculate">ccCalculate</a></li><li><a href="global.html#ccClearErrorMessage">ccClearErrorMessage</a></li><li><a href="global.html#ccConvertedCurrencyChanged">ccConvertedCurrencyChanged</a></li><li><a href="global.html#ccFetchRemoteData">ccFetchRemoteData</a></li><li><a href="global.html#ccFormatDate">ccFormatDate</a></li><li><a href="global.html#ccGetTemplate">ccGetTemplate</a></li><li><a href="global.html#ccHandleRemoteData">ccHandleRemoteData</a></li><li><a href="global.html#ccShowDisclaimer">ccShowDisclaimer</a></li><li><a href="global.html#ccShowErrorMessage">ccShowErrorMessage</a></li><li><a href="global.html#ccValidateNumber">ccValidateNumber</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Tue Feb 20 2018 20:11:57 GMT-0500 (EST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
