@@ -35,6 +35,12 @@ https://www.myhost.com/demo/index.html
 
 Put a number into the first input box for amount of money to be converted; then choose what currency this amount is; finally, choose the target currency under *Converted amount:*.
 
+Alternatively, you can visit my demo site as shown below:
+
+```
+http://scs2679.glopal.net/publish/
+```
+
 ## Usage
 
 In your html file, put in these two lines into head section include the widget files:
