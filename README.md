@@ -43,7 +43,7 @@ In your html file, put in these two lines into head section include the widget f
 <link rel="stylesheet" type="text/css" href="widget.css">
 <script type="text/javascript" src="widget.js"></script>
 ```
-In the body section, put in a <div> element with a uniqe id, such as:
+In the body section, put in a div element with an uniqe id, such as:
 
 ```
 <div id="firstInstanceOfWidget"></div>
