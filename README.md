@@ -1,6 +1,6 @@
 # CurrencyConverter
 
-One Paragraph of project description goes here
+A vanilla Javascript widget for converting currency among CAD, USD and EUR.
 
 ## Getting Started
 
