@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Currency Converter</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="img/ico" href="../favicon.ico">
+        <link rel="stylesheet" type="text/css" href="widget.css">
+        <style>
+            div {
+                background-color: #eee;
+                margin: 4px 4px 4px 4px;
+            }
+/*            #left1 {
+                float: left;
+                width: 500px;
+                margin-right: 10px;
+            }*/
+
+            #left2 {
+                float: left;
+                width: 300px;
+            }
+            
+            #left3 {
+                float: left;
+                width: 150px;
+            }            
+
+            #left4 {
+                clear: both;
+                width: 100%;
+            }    
+            
+        </style>        
+
+        <script type="text/javascript" src="widget.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+//                var left1 = document.getElementById('left1');
+                var left2 = document.getElementById('left2');
+                var left3 = document.getElementById('left3');
+                var left4 = document.getElementById('left4');
+                
+//                left1.innerHTML = ccGetTemplate();
+                left2.innerHTML = ccGetTemplate();
+                left3.innerHTML = ccGetTemplate();
+                left4.innerHTML = ccGetTemplate();
+            }, false);
+        </script>        
+        
+        
+    </head>
+    
+
+    
+    <body>
+        <!--<div id="left1"></div>-->
+
+        <div id="left2"></div>
+        
+        <div id="left3"></div>      
+        
+        <div id="left4"></div>        
+        
+    </body>
+</html>
